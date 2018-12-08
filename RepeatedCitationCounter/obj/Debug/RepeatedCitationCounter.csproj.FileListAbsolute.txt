@@ -1,0 +1,10 @@
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\bin\Debug\RepeatedCitationCounter.exe.config
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\bin\Debug\RepeatedCitationCounter.exe
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\bin\Debug\RepeatedCitationCounter.pdb
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\obj\Debug\RepeatedCitationCounter.csprojResolveAssemblyReference.cache
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\obj\Debug\RepeatedCitationCounter.Form1.resources
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\obj\Debug\RepeatedCitationCounter.Properties.Resources.resources
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\obj\Debug\RepeatedCitationCounter.csproj.GenerateResource.Cache
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\obj\Debug\RepeatedCitationCounter.csproj.CoreCompileInputs.cache
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\obj\Debug\RepeatedCitationCounter.exe
+c:\users\user\source\repos\RepeatedCitationCounter\RepeatedCitationCounter\obj\Debug\RepeatedCitationCounter.pdb
