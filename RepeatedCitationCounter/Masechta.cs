@@ -13,7 +13,7 @@ namespace RepeatedCitationCounter
         private string CleanedText { get; }
         private Block[][] Perakim;
         private Char[] AcceptableCharacters;
-        private string chosenMasechta;
+        private string chosenMasechta = "Bava Basra";
         public string ChosenMasechta { get { return chosenMasechta; } set { chosenMasechta = value; } }
         private GeneralResources GR;
 

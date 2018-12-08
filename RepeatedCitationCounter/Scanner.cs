@@ -8,7 +8,7 @@ namespace RepeatedCitationCounter
 {
     class Scanner
     {
-        private int characterLimit;
+        private int characterLimit = 50;
         public int CharacterLimit { set { characterLimit = value} }
     }
 }
