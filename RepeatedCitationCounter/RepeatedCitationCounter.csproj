@@ -55,6 +55,7 @@
     <Compile Include="Gemara.cs" />
     <Compile Include="Masechta.cs" />
     <Compile Include="GeneralResources.cs" />
+    <Compile Include="Perek.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanner.cs" />

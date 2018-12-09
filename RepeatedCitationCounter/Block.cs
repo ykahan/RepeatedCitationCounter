@@ -10,6 +10,16 @@ namespace RepeatedCitationCounter
     {
         private string Mishna;
         private Gemara Gemara;
+        private string fullText;
+        public string FullText { get { return fullText; } set { fullText = value; } }
+        private Scanner scanner;
+
+        public Block(string text, Scanner scanner)
+        {
+            FullText = text;
+            this.scanner = scanner;
+        }
+
     
 
     }

@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AnalyzeButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.ResultsText = new System.Windows.Forms.Label();
             this.CharsLimitNumUpDown = new System.Windows.Forms.NumericUpDown();
@@ -48,15 +48,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Masechta";
             // 
-            // button1
+            // AnalyzeButton
             // 
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 171);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(288, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Analyze!";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AnalyzeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AnalyzeButton.Location = new System.Drawing.Point(12, 171);
+            this.AnalyzeButton.Name = "AnalyzeButton";
+            this.AnalyzeButton.Size = new System.Drawing.Size(288, 23);
+            this.AnalyzeButton.TabIndex = 2;
+            this.AnalyzeButton.Text = "Analyze!";
+            this.AnalyzeButton.UseVisualStyleBackColor = true;
+            this.AnalyzeButton.Click += new System.EventHandler(this.AnalyzeButton_Click);
             // 
             // label2
             // 
@@ -124,7 +125,7 @@
             this.Controls.Add(this.CharsLimitNumUpDown);
             this.Controls.Add(this.ResultsText);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AnalyzeButton);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -138,7 +139,7 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AnalyzeButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label ResultsText;
         private System.Windows.Forms.NumericUpDown CharsLimitNumUpDown;
