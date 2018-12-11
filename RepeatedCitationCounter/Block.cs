@@ -18,6 +18,7 @@ namespace RepeatedCitationCounter
         {
             FullText = text;
             this.scanner = scanner;
+            
         }
 
     

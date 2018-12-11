@@ -12,28 +12,27 @@ namespace RepeatedCitationCounter
 {
     public partial class Form1 : Form
     {
-        Masechta CurrentMasechta;
+        String ChosenMasechta;
         Scanner Scanner;
         public Form1()
         {
             InitializeComponent();
-            CurrentMasechta = new Masechta();
-            
         }
 
         private void MasechtaChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CurrentMasechta.ChosenMasechta = MasechtaChoice.Text;
+            ChosenMasechta = MasechtaChoice.Text;
         }
 
         private void CharsLimitNumUpDown_ValueChanged(object sender, EventArgs e)
         {
-            Scanner.CharacterLimit = (int) CharsLimitNumUpDown.Value;
+            Scanner.CharacterLimit = (int)CharsLimitNumUpDown.Value;
         }
 
         private void AnalyzeButton_Click(object sender, EventArgs e)
         {
-            Scanner = new Scanner(CurrentMasechta.TextWords);
+            Masechta masechta = new Masechta(ChosenMasechta);
+            Scanner scanner = new Scanner(masechta.TextWords);
         }
     }
 }
