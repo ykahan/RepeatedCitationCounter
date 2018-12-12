@@ -12,10 +12,10 @@ namespace RepeatedCitationCounter
 {
     public partial class Form1 : Form
     {
-        private string ChosenMasechta;
+        private string ChosenMasechta = "Bava Basra";
         private Scanner Scanner;
         private int characterLimit = 50;
-        public int CharacterLimit { set { characterLimit = value; } }
+        public int CharacterLimit { get { return characterLimit;  } set { characterLimit = value; } }
 
         public Form1()
         {
@@ -35,7 +35,11 @@ namespace RepeatedCitationCounter
         private void AnalyzeButton_Click(object sender, EventArgs e)
         {
             Masechta masechta = new Masechta(ChosenMasechta);
-            Scanner scanner = new Scanner(masechta.TextWords);
+            Scanner = new Scanner(masechta.TextWords);
+            string[] Blocks = Scanner.GetBlocks(masechta.FullText);
+            Blocks = Scanner.CleanBlocks(Blocks);
+            int count = Scanner.CountRepeatedCites(Blocks, CharacterLimit);
+            ResultsText.Text = $"Masechta {ChosenMasechta} has {count} repeated citations.";
         }
     }
 }

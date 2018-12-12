@@ -92,15 +92,78 @@ namespace RepeatedCitationCounter
                 }
             }
             string[] result = new string[] { firstCitation, secondCitation };
+            return result;
         }
 
         public int CompareCitations(string[] text, int limit)
         {
             string first = text[0];
             string second = text[1];
-
+            return 0;
         }
 
+        public string[] GetBlocks(string text)
+        {
+            string[] result = text.Split(':');
+            return result;
+        }
 
+        public string[] CleanBlocks(string[] blocks)
+        {
+            if (blocks.Length > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                for (int text = 0; text < blocks.Length; text++)
+                {
+                    foreach (char character in blocks[text])
+                    {
+                        if (CharNotSpace(character)) sb.Append(character);
+                    }
+                    int etc = EndsWithEtc(sb);
+                    if (etc > 0) sb = ClearEtc(sb, etc);
+                    blocks[text] = sb.ToString();
+                    sb.Clear();
+                }
+            }
+            return blocks;
+        }
+
+        private bool CharNotSpace(char c)
+        {
+            if (c.Equals(' ')) return false;
+            return true;
+        }
+
+        private int EndsWithEtc(StringBuilder sb)
+        {
+            if (sb.ToString().EndsWith("וכו׳") || sb.ToString().EndsWith("וכו'") || sb.ToString().EndsWith("וגו'") || sb.ToString().EndsWith("וגו׳")) return 4;
+            if (sb.ToString().EndsWith("וכו") || sb.ToString().EndsWith("וגו")) return 3;
+            if (sb.ToString().EndsWith("וכוליה") || sb.ToString().EndsWith("וכולי'") || sb.ToString().EndsWith("וכולי׳")) return 6;
+            if (sb.ToString().EndsWith("וגומר")) return 5;
+            return - 1;
+        }
+
+        private StringBuilder ClearEtc(StringBuilder sb, int etc)
+        {
+            sb.Remove(sb.Length - etc, etc);            
+            return sb;
+        }
+
+        public int CountRepeatedCites(string[] blocks, int limit)
+        {
+            int counter = 0;
+            for(int block = 1; block < blocks.Length; block++)
+            {
+                bool identical = true;
+                int shortText = blocks[block].Length;
+                if (blocks[block - 1].Length < blocks[block].Length) shortText = blocks[block - 1].Length;
+                for(int currentChar = 0; currentChar < limit && currentChar < shortText; currentChar++)
+                {
+                    if (!blocks[block][currentChar].Equals(blocks[block - 1][currentChar])) identical = false;
+                }
+                if (identical == true) counter++;
+            }
+            return counter;
+        }
     }
 }

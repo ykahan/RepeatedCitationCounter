@@ -9,7 +9,8 @@ namespace RepeatedCitationCounter
 {
     class Masechta
     {
-        private string FullText;
+        private string fullText;
+        public string FullText { get { return fullText; } }
         private String[] textWords;
         public String[] TextWords { get { return textWords; } set { textWords = value; } }
         //private string cleanedText;
@@ -24,14 +25,13 @@ namespace RepeatedCitationCounter
         {
             GR = new GeneralResources();
             ChosenMasechta = masechta;
-            FullText = System.IO.File.ReadAllText(GR.FilePaths[ChosenMasechta]);
-            Perakim = GetPerakimTexts();
-
+            fullText = System.IO.File.ReadAllText(GR.FilePaths[ChosenMasechta]);
+            //Perakim = GetPerakimTexts();
         }
 
         public string[] GetPerakimTexts()
         {
-            TextWords = FullText.Split(' ');
+            TextWords = fullText.Split(' ');
             StringBuilder sb = new StringBuilder();
             List<string> PerakimTextsList = new List<string>();
             for (int word = 0; word < TextWords.Length; word++)
