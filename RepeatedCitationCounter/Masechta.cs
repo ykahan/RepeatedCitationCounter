@@ -11,9 +11,9 @@ namespace RepeatedCitationCounter
     {
         private string FullText;
         private String[] textWords;
-        public String[] TextWords { get { return textWords; } set { textWords = value; } };
-        private string cleanedText;
-        public string CleanedText { get { return cleanedText; } set { cleanedText = value; } }
+        public String[] TextWords { get { return textWords; } set { textWords = value; } }
+        //private string cleanedText;
+        //public string CleanedText { get { return cleanedText; } set { cleanedText = value; } }
         private string[] Perakim;
         private string chosenMasechta = "Bava Basra";
         public string ChosenMasechta { get { return chosenMasechta; } set { chosenMasechta = value; } }
@@ -25,12 +25,13 @@ namespace RepeatedCitationCounter
             GR = new GeneralResources();
             ChosenMasechta = masechta;
             FullText = System.IO.File.ReadAllText(GR.FilePaths[ChosenMasechta]);
-            TextWords = FullText.Split(' ');
             Perakim = GetPerakimTexts();
+
         }
 
         public string[] GetPerakimTexts()
         {
+            TextWords = FullText.Split(' ');
             StringBuilder sb = new StringBuilder();
             List<string> PerakimTextsList = new List<string>();
             for (int word = 0; word < TextWords.Length; word++)
@@ -40,8 +41,12 @@ namespace RepeatedCitationCounter
                 if(IsEndOfPerek(word))
                 {
                     string perek = sb.ToString();
-                    sb.Clear();
+                    for(int i = 0; i < perek.Length; i++)
+                    {
+                        sb.Append(perek[i]);
+                    }
                     PerakimTextsList.Add(perek);
+                    sb.Clear();
                 }
             }
             string[] PerakimTextsArray = new string[PerakimTextsList.Count];

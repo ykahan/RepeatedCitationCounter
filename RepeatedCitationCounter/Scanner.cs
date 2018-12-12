@@ -8,8 +8,7 @@ namespace RepeatedCitationCounter
 {
     class Scanner
     {
-        private int characterLimit = 50;
-        public int CharacterLimit { set { characterLimit = value; } }
+
         private String[] Text;
 
         public Scanner(String[] text)
@@ -17,7 +16,7 @@ namespace RepeatedCitationCounter
             Text = text;
         }
 
-        public Perek[] BuildPerekim()
+        public Perek[] BuildPerakim()
         {
             List<string> perakimList = new List<string>();
             StringBuilder sb = new StringBuilder();
@@ -55,11 +54,53 @@ namespace RepeatedCitationCounter
                 }
             }
             Block[] blocksArray = new Block[blocksList.Count];
-            for(int blockNumber = 0; blockNumber < blocksList.Count; blockNumber++)
+            for (int blockNumber = 0; blockNumber < blocksList.Count; blockNumber++)
             {
                 blocksArray[blockNumber] = new Block(blocksList[blockNumber], this);
             }
             return blocksArray;
         }
+
+        public string[] GetCitations(string[] text)
+        {
+            string firstCitation = "";
+            string secondCitation = "";
+            string placeholder = "";
+            StringBuilder sb = new StringBuilder();
+            bool EndCite = false;
+            foreach (string word in text)
+            {
+                if (word[word.Length - 1].Equals(":")) EndCite = true;
+                else EndCite = false;
+                sb.Append(word);
+                if (EndCite)
+                {
+                    placeholder = sb.ToString();
+                    sb.Clear();
+                    if (firstCitation.Equals(""))
+                    {
+                        firstCitation = placeholder;
+                    }
+                    else
+                    {
+                        if (!secondCitation.Equals(""))
+                        {
+                            firstCitation = secondCitation;
+                        }
+                        secondCitation = placeholder;
+                    }
+                }
+            }
+            string[] result = new string[] { firstCitation, secondCitation };
+        }
+
+        public int CompareCitations(string[] text, int limit)
+        {
+            string first = text[0];
+            string second = text[1];
+
+        }
+
+
     }
 }

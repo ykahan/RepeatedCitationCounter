@@ -12,8 +12,11 @@ namespace RepeatedCitationCounter
 {
     public partial class Form1 : Form
     {
-        String ChosenMasechta;
-        Scanner Scanner;
+        private string ChosenMasechta;
+        private Scanner Scanner;
+        private int characterLimit = 50;
+        public int CharacterLimit { set { characterLimit = value; } }
+
         public Form1()
         {
             InitializeComponent();
@@ -26,7 +29,7 @@ namespace RepeatedCitationCounter
 
         private void CharsLimitNumUpDown_ValueChanged(object sender, EventArgs e)
         {
-            Scanner.CharacterLimit = (int)CharsLimitNumUpDown.Value;
+            CharacterLimit = (int)CharsLimitNumUpDown.Value;
         }
 
         private void AnalyzeButton_Click(object sender, EventArgs e)
