@@ -26,6 +26,7 @@ namespace RepeatedCitationCounter
             GR = new GeneralResources();
             ChosenMasechta = masechta;
             fullText = System.IO.File.ReadAllText(GR.FilePaths[ChosenMasechta]);
+            
             //Perakim = GetPerakimTexts();
         }
 

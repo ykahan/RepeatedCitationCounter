@@ -36,6 +36,8 @@
             this.CharsLimitNumUpDown = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.MasechtaChoice = new System.Windows.Forms.ComboBox();
+            this.PrintButton = new System.Windows.Forms.Button();
+            this.DisplayBlocks = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CharsLimitNumUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,18 +115,41 @@
             // 
             this.MasechtaChoice.FormattingEnabled = true;
             this.MasechtaChoice.Items.AddRange(new object[] {
-            "Bava Basra"});
+            "Bava Basra",
+            "Testing Text"});
             this.MasechtaChoice.Location = new System.Drawing.Point(154, 138);
             this.MasechtaChoice.Name = "MasechtaChoice";
             this.MasechtaChoice.Size = new System.Drawing.Size(121, 21);
             this.MasechtaChoice.TabIndex = 7;
             this.MasechtaChoice.Text = "Bava Basra";
+            this.MasechtaChoice.SelectedIndexChanged += new System.EventHandler(this.MasechtaChoice_SelectedIndexChanged_1);
+            // 
+            // PrintButton
+            // 
+            this.PrintButton.Location = new System.Drawing.Point(13, 243);
+            this.PrintButton.Name = "PrintButton";
+            this.PrintButton.Size = new System.Drawing.Size(75, 23);
+            this.PrintButton.TabIndex = 8;
+            this.PrintButton.Text = "Print Blocks";
+            this.PrintButton.UseVisualStyleBackColor = true;
+            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
+            // 
+            // DisplayBlocks
+            // 
+            this.DisplayBlocks.AutoSize = true;
+            this.DisplayBlocks.Location = new System.Drawing.Point(408, 13);
+            this.DisplayBlocks.Name = "DisplayBlocks";
+            this.DisplayBlocks.Size = new System.Drawing.Size(65, 13);
+            this.DisplayBlocks.TabIndex = 9;
+            this.DisplayBlocks.Text = "Display Test";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 261);
+            this.ClientSize = new System.Drawing.Size(764, 497);
+            this.Controls.Add(this.DisplayBlocks);
+            this.Controls.Add(this.PrintButton);
             this.Controls.Add(this.MasechtaChoice);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CharsLimitNumUpDown);
@@ -132,8 +157,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.AnalyzeButton);
             this.Controls.Add(this.label1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Cite Find by Yehoshua Kahan";
             ((System.ComponentModel.ISupportInitialize)(this.CharsLimitNumUpDown)).EndInit();
@@ -150,6 +173,8 @@
         private System.Windows.Forms.NumericUpDown CharsLimitNumUpDown;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox MasechtaChoice;
+        private System.Windows.Forms.Button PrintButton;
+        private System.Windows.Forms.Label DisplayBlocks;
     }
 }
 

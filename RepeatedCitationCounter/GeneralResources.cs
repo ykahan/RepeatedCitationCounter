@@ -19,6 +19,7 @@ namespace RepeatedCitationCounter
 };
             FilePaths = new Dictionary<string, string>();
             FilePaths.Add("Bava Basra", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\BavaBasra.txt");
+            FilePaths.Add("Testing Text", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\TestingText.txt");
 
         }
     }
