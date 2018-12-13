@@ -85,6 +85,11 @@
             0,
             0,
             0});
+            this.CharsLimitNumUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.CharsLimitNumUpDown.Name = "CharsLimitNumUpDown";
             this.CharsLimitNumUpDown.Size = new System.Drawing.Size(50, 20);
             this.CharsLimitNumUpDown.TabIndex = 5;
