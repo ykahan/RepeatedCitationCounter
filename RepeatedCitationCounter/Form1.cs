@@ -31,7 +31,7 @@ namespace RepeatedCitationCounter
         private void CharsLimitNumUpDown_ValueChanged(object sender, EventArgs e)
         {
             CharacterLimit = (int)CharsLimitNumUpDown.Value;
-            ResultsText.Text = $"The app will now allow citations of up to {CharacterLimit} characters.";
+            ResultsText.Text = $"The app will now allow citations of up to {CharacterLimit} characters";
         }
 
         private void AnalyzeButton_Click(object sender, EventArgs e)
