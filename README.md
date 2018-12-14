@@ -1,6 +1,6 @@
 "# RepeatedCitationCounter"
 
-This app allows the user to select any given masechta of the Talmud (assuming that I've loaded the text and enabled the option in a combo box) and scan it, looking for places where the same line of Mishna is cited twice in succession.  It depends upon sorting citations from Gemara proper on the basis of length.  That is, it assumes that citations have n or fewer characters, and that blocks of Gemara proper have more than n characters. It allows the user to select the value of n by means of a numeric-up-down control.  The control is built to allow for 1 <= n <= 300, permitting for maximum user flexibility.
+This app allows the user to select any given masechta of the Talmud (assuming that I've loaded the text and enabled the option in a combo box) and scan it, looking for places where the same line of Mishna is cited twice in succession.  It depends upon sorting citations from Gemara proper on the basis of length.  That is, it assumes that citations have n or fewer characters, and that blocks of Gemara proper have more than n characters. It allows the user to select the value of n by means of a numeric-up-down control.  The control is built to allow for 1 <= n <= 300, permitting maximum user flexibility.
 
 Whenever the user alters the value of n or the targeted masechta, a text message appears on the app screen, confirming the change.
 
