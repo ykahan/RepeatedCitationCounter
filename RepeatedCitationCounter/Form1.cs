@@ -39,8 +39,9 @@ namespace RepeatedCitationCounter
             Masechta masechta = new Masechta(ChosenMasechta);
             Scanner = new Scanner();
             string[] Blocks = Scanner.GetBlocks(masechta.FullText);
-            Blocks = Scanner.CleanBlocks(Blocks);
-            int count = Scanner.CountRepeatedCites(Blocks, CharacterLimit);
+            string[] shortBlocks = Scanner.ShortBlocks(Blocks, CharacterLimit);
+            shortBlocks = Scanner.CleanBlocks(shortBlocks);
+            int count = Scanner.CountRepeatedCites(shortBlocks);
             ResultsText.Text = $"Masechta {ChosenMasechta} has {count} repeated citations.";
         }
 

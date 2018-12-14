@@ -149,21 +149,35 @@ namespace RepeatedCitationCounter
             return sb;
         }
 
-        public int CountRepeatedCites(string[] blocks, int limit)
+        public int CountRepeatedCites(string[] blocks)
         {
             int counter = 0;
-            for(int block = 2; block < blocks.Length; block++)
+            for(int block = 1; block < blocks.Length; block++)
             {
                 bool identical = true;
                 int shortText = blocks[block].Length;
-                if (blocks[block - 2].Length < blocks[block].Length) shortText = blocks[block - 2].Length;
-                for(int currentChar = 0; currentChar < limit && currentChar < shortText; currentChar++)
+                if (blocks[block - 1].Length < blocks[block].Length) shortText = blocks[block - 1].Length;
+                for(int currentChar = 0; currentChar < shortText; currentChar++)
                 {
-                    if (!blocks[block][currentChar].Equals(blocks[block - 2][currentChar])) identical = false;
+                    if (!blocks[block][currentChar].Equals(blocks[block - 1][currentChar])) identical = false;
                 }
                 if (identical == true) counter++;
             }
             return counter;
+        }
+
+        public string[] ShortBlocks(string[] blocks, int limit)
+        {
+            List<String> blocksList = new List<String>();
+            for (int block = 0; block < blocks.Length; block++)
+            {
+                if (blocks[block].Length <= limit)
+                {
+                    blocksList.Add(blocks[block]);
+                }
+            }
+            string[] result = blocksList.ToArray();
+            return result;
         }
     }
 }
