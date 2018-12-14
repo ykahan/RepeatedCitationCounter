@@ -149,8 +149,9 @@ namespace RepeatedCitationCounter
             return sb;
         }
 
-        public int CountRepeatedCites(string[] blocks)
+        public string[] GetRepeatedCites(string[] blocks)
         {
+            List<string> resultsList = new List<string>();
             int counter = 0;
             for(int block = 1; block < blocks.Length; block++)
             {
@@ -161,9 +162,14 @@ namespace RepeatedCitationCounter
                 {
                     if (!blocks[block][currentChar].Equals(blocks[block - 1][currentChar])) identical = false;
                 }
-                if (identical == true) counter++;
+                if (identical == true) {
+                    counter++;
+                    resultsList.Add(blocks[block]);
+                    resultsList.Add(blocks[block]);
+                }
             }
-            return counter;
+            string[] resultsArray = resultsList.ToArray();
+            return resultsArray;
         }
 
         public string[] ShortBlocks(string[] blocks, int limit)

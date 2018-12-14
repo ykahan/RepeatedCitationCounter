@@ -41,8 +41,13 @@ namespace RepeatedCitationCounter
             string[] Blocks = Scanner.GetBlocks(masechta.FullText);
             string[] shortBlocks = Scanner.ShortBlocks(Blocks, CharacterLimit);
             shortBlocks = Scanner.CleanBlocks(shortBlocks);
-            int count = Scanner.CountRepeatedCites(shortBlocks);
-            ResultsText.Text = $"Masechta {ChosenMasechta} has {count} repeated citations.";
+            string[] repetitionsFound = Scanner.GetRepeatedCites(shortBlocks);
+            ResultsText.Text = $"Masechta {ChosenMasechta} has {repetitionsFound.Length / 2} repeated citations.";
+            DisplayBlocks.Text = $"Here are the repetitions discovered in {ChosenMasechta}.";
+            for (int repetition = 0; repetition < repetitionsFound.Length; repetition++)
+            {
+                DisplayBlocks.Text += repetitionsFound[repetition];
+            }
         }
 
         private void PrintButton_Click(object sender, EventArgs e)
