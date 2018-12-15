@@ -149,30 +149,6 @@ namespace RepeatedCitationCounter
             return sb;
         }
 
-        //public string[] GetRepeatedCites(string[] blocks, int Levenshtein)
-        //{
-        //    List<string> resultsList = new List<string>();
-        //    int counter = 0;
-        //    for (int block = 1; block < blocks.Length; block++)
-        //    {
-        //        bool closeEnough = true;
-        //        int shortText = blocks[block].Length;
-        //        if (blocks[block - 1].Length < blocks[block].Length) shortText = blocks[block - 1].Length;
-        //        for (int currentChar = 0; currentChar < shortText; currentChar++)
-        //        {
-        //            if (!blocks[block][currentChar].Equals(blocks[block - 1][currentChar])) closeEnough = false;
-        //        }
-        //        if (closeEnough == true)
-        //        {
-        //            counter++;
-        //            resultsList.Add(blocks[block]);
-        //            resultsList.Add(blocks[block]);
-        //        }
-        //    }
-        //    string[] resultsArray = resultsList.ToArray();
-        //    return resultsArray;
-        //}
-
         public string[] GetRepeatedCites(string[] blocks, int MaxLevDistance)
         {
             List<string> resultsList = new List<string>();
@@ -180,8 +156,6 @@ namespace RepeatedCitationCounter
             for (int block = 1; block < blocks.Length; block++)
             {
                 bool closeEnough = true;
-                int shortText = blocks[block].Length;
-                if (blocks[block - 1].Length < blocks[block].Length) shortText = blocks[block - 1].Length;
                 if (Levenshtein(blocks[block], blocks[block - 1]) > MaxLevDistance) closeEnough = false;
                 if (closeEnough == true)
                 {
