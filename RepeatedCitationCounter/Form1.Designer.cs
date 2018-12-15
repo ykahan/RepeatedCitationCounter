@@ -38,13 +38,16 @@
             this.MasechtaChoice = new System.Windows.Forms.ComboBox();
             this.PrintButton = new System.Windows.Forms.Button();
             this.DisplayBlocks = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LevenshteinUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.CharsLimitNumUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LevenshteinUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 138);
+            this.label1.Location = new System.Drawing.Point(41, 185);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 1;
@@ -53,7 +56,7 @@
             // AnalyzeButton
             // 
             this.AnalyzeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AnalyzeButton.Location = new System.Drawing.Point(12, 171);
+            this.AnalyzeButton.Location = new System.Drawing.Point(12, 213);
             this.AnalyzeButton.Name = "AnalyzeButton";
             this.AnalyzeButton.Size = new System.Drawing.Size(288, 23);
             this.AnalyzeButton.TabIndex = 2;
@@ -72,7 +75,7 @@
             // ResultsText
             // 
             this.ResultsText.AutoSize = true;
-            this.ResultsText.Location = new System.Drawing.Point(41, 208);
+            this.ResultsText.Location = new System.Drawing.Point(41, 239);
             this.ResultsText.Name = "ResultsText";
             this.ResultsText.Size = new System.Drawing.Size(210, 13);
             this.ResultsText.TabIndex = 4;
@@ -81,7 +84,7 @@
             // 
             // CharsLimitNumUpDown
             // 
-            this.CharsLimitNumUpDown.Location = new System.Drawing.Point(154, 106);
+            this.CharsLimitNumUpDown.Location = new System.Drawing.Point(180, 106);
             this.CharsLimitNumUpDown.Maximum = new decimal(new int[] {
             300,
             0,
@@ -117,7 +120,7 @@
             this.MasechtaChoice.Items.AddRange(new object[] {
             "Bava Basra",
             "Testing Text"});
-            this.MasechtaChoice.Location = new System.Drawing.Point(154, 138);
+            this.MasechtaChoice.Location = new System.Drawing.Point(180, 182);
             this.MasechtaChoice.Name = "MasechtaChoice";
             this.MasechtaChoice.Size = new System.Drawing.Size(121, 21);
             this.MasechtaChoice.TabIndex = 7;
@@ -126,7 +129,7 @@
             // 
             // PrintButton
             // 
-            this.PrintButton.Location = new System.Drawing.Point(13, 243);
+            this.PrintButton.Location = new System.Drawing.Point(12, 276);
             this.PrintButton.Name = "PrintButton";
             this.PrintButton.Size = new System.Drawing.Size(75, 23);
             this.PrintButton.TabIndex = 8;
@@ -143,11 +146,35 @@
             this.DisplayBlocks.TabIndex = 9;
             this.DisplayBlocks.Text = "Display Test";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(44, 146);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Max Levenshtein Dist";
+            // 
+            // LevenshteinUpDown
+            // 
+            this.LevenshteinUpDown.Location = new System.Drawing.Point(180, 146);
+            this.LevenshteinUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.LevenshteinUpDown.Name = "LevenshteinUpDown";
+            this.LevenshteinUpDown.Size = new System.Drawing.Size(50, 20);
+            this.LevenshteinUpDown.TabIndex = 11;
+            this.LevenshteinUpDown.ValueChanged += new System.EventHandler(this.LevenshteinUpDown_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 497);
+            this.Controls.Add(this.LevenshteinUpDown);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.DisplayBlocks);
             this.Controls.Add(this.PrintButton);
             this.Controls.Add(this.MasechtaChoice);
@@ -160,6 +187,7 @@
             this.Name = "Form1";
             this.Text = "Cite Find by Yehoshua Kahan";
             ((System.ComponentModel.ISupportInitialize)(this.CharsLimitNumUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LevenshteinUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,6 +203,8 @@
         private System.Windows.Forms.ComboBox MasechtaChoice;
         private System.Windows.Forms.Button PrintButton;
         private System.Windows.Forms.Label DisplayBlocks;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown LevenshteinUpDown;
     }
 }
 

@@ -13,7 +13,7 @@ namespace RepeatedCitationCounter
 
         public Scanner()
         {
-            
+
         }
 
         public Perek[] BuildPerakim()
@@ -140,31 +140,53 @@ namespace RepeatedCitationCounter
             if (sb.ToString().EndsWith("וכו") || sb.ToString().EndsWith("וגו")) return 3;
             if (sb.ToString().EndsWith("וכוליה") || sb.ToString().EndsWith("וכולי'") || sb.ToString().EndsWith("וכולי׳")) return 6;
             if (sb.ToString().EndsWith("וגומר")) return 5;
-            return - 1;
+            return -1;
         }
 
         private StringBuilder ClearEtc(StringBuilder sb, int etc)
         {
-            sb.Remove(sb.Length - etc, etc);            
+            sb.Remove(sb.Length - etc, etc);
             return sb;
         }
 
-        public string[] GetRepeatedCites(string[] blocks)
+        //public string[] GetRepeatedCites(string[] blocks, int Levenshtein)
+        //{
+        //    List<string> resultsList = new List<string>();
+        //    int counter = 0;
+        //    for (int block = 1; block < blocks.Length; block++)
+        //    {
+        //        bool closeEnough = true;
+        //        int shortText = blocks[block].Length;
+        //        if (blocks[block - 1].Length < blocks[block].Length) shortText = blocks[block - 1].Length;
+        //        for (int currentChar = 0; currentChar < shortText; currentChar++)
+        //        {
+        //            if (!blocks[block][currentChar].Equals(blocks[block - 1][currentChar])) closeEnough = false;
+        //        }
+        //        if (closeEnough == true)
+        //        {
+        //            counter++;
+        //            resultsList.Add(blocks[block]);
+        //            resultsList.Add(blocks[block]);
+        //        }
+        //    }
+        //    string[] resultsArray = resultsList.ToArray();
+        //    return resultsArray;
+        //}
+
+        public string[] GetRepeatedCites(string[] blocks, int MaxLevDistance)
         {
             List<string> resultsList = new List<string>();
             int counter = 0;
-            for(int block = 1; block < blocks.Length; block++)
+            for (int block = 1; block < blocks.Length; block++)
             {
-                bool identical = true;
+                bool closeEnough = true;
                 int shortText = blocks[block].Length;
                 if (blocks[block - 1].Length < blocks[block].Length) shortText = blocks[block - 1].Length;
-                for(int currentChar = 0; currentChar < shortText; currentChar++)
+                if (Levenshtein(blocks[block], blocks[block - 1]) > MaxLevDistance) closeEnough = false;
+                if (closeEnough == true)
                 {
-                    if (!blocks[block][currentChar].Equals(blocks[block - 1][currentChar])) identical = false;
-                }
-                if (identical == true) {
                     counter++;
-                    resultsList.Add(blocks[block]);
+                    resultsList.Add(blocks[block - 1]);
                     resultsList.Add(blocks[block]);
                 }
             }
@@ -184,6 +206,61 @@ namespace RepeatedCitationCounter
             }
             string[] result = blocksList.ToArray();
             return result;
+        }
+
+        private int Levenshtein(string a, string b)
+        {
+            // taken from Wikibooks
+
+            if (string.IsNullOrEmpty(a))
+            {
+                if (!string.IsNullOrEmpty(b))
+                {
+                    return b.Length;
+                }
+                return 0;
+            }
+
+            if (string.IsNullOrEmpty(b))
+            {
+                if (!string.IsNullOrEmpty(a))
+                {
+                    return a.Length;
+                }
+                return 0;
+            }
+
+            int cost;
+            int[,] d = new int[a.Length + 1, b.Length + 1];
+            int min1;
+            int min2;
+            int min3;
+
+            for (int i = 0; i <= d.GetUpperBound(0); i += 1)
+            {
+                d[i, 0] = i;
+            }
+
+            for (int i = 0; i <= d.GetUpperBound(1); i += 1)
+            {
+                d[0, i] = i;
+            }
+
+            for (int i = 1; i <= d.GetUpperBound(0); i += 1)
+            {
+                for (int j = 1; j <= d.GetUpperBound(1); j += 1)
+                {
+                    cost = (a[i - 1] != b[j - 1]) ? 1 : 0;
+
+                    min1 = d[i - 1, j] + 1;
+                    min2 = d[i, j - 1] + 1;
+                    min3 = d[i - 1, j - 1] + cost;
+                    d[i, j] = Math.Min(Math.Min(min1, min2), min3);
+                }
+            }
+
+            return d[d.GetUpperBound(0), d.GetUpperBound(1)];
+
         }
     }
 }

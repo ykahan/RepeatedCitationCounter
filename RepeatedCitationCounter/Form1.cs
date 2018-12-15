@@ -16,6 +16,8 @@ namespace RepeatedCitationCounter
         private Scanner Scanner;
         private int characterLimit = 50;
         public int CharacterLimit { get { return characterLimit; } set { characterLimit = value; } }
+        private int levenshtein = 0;
+        public int Levenshtein { get { return levenshtein;  } set { levenshtein = value; } }
 
         public Form1()
         {
@@ -41,7 +43,7 @@ namespace RepeatedCitationCounter
             string[] Blocks = Scanner.GetBlocks(masechta.FullText);
             string[] shortBlocks = Scanner.ShortBlocks(Blocks, CharacterLimit);
             shortBlocks = Scanner.CleanBlocks(shortBlocks);
-            string[] repetitionsFound = Scanner.GetRepeatedCites(shortBlocks);
+            string[] repetitionsFound = Scanner.GetRepeatedCites(shortBlocks, Levenshtein);
             ResultsText.Text = $"Masechta {ChosenMasechta} has {repetitionsFound.Length / 2} repeated citations.";
             DisplayBlocks.Text = $"Here are the repetitions discovered in {ChosenMasechta}.";
             for (int repetition = 0; repetition < repetitionsFound.Length; repetition++)
@@ -60,6 +62,12 @@ namespace RepeatedCitationCounter
             {
                 DisplayBlocks.Text += Blocks[block];
             }
+        }
+
+        private void LevenshteinUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            Levenshtein = (int)LevenshteinUpDown.Value;
+            ResultsText.Text = $"The maximum permitted Levenshtein distance is now {Levenshtein}.";
         }
     }
 }
