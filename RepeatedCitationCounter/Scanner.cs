@@ -10,10 +10,11 @@ namespace RepeatedCitationCounter
     {
 
         private String[] Text;
+        GeneralResources gr;
 
         public Scanner()
         {
-
+            gr = new GeneralResources();
         }
 
         public Perek[] BuildPerakim()
@@ -113,14 +114,18 @@ namespace RepeatedCitationCounter
             if (blocks.Length > 0)
             {
                 StringBuilder sb = new StringBuilder();
+                
                 for (int text = 0; text < blocks.Length; text++)
                 {
+                    sb.Append('\n');
                     foreach (char character in blocks[text])
                     {
-                        if (CharNotSpace(character)) sb.Append(character);
+                        if (gr.AcceptableCharacters.Contains(character)) sb.Append(character);
+                        //if (CharNotSpace(character)) sb.Append(character);
                     }
                     int etc = EndsWithEtc(sb);
                     if (etc > 0) sb = ClearEtc(sb, etc);
+                    //sb.Append('\n');
                     blocks[text] = sb.ToString();
                     sb.Clear();
                 }
@@ -128,15 +133,15 @@ namespace RepeatedCitationCounter
             return blocks;
         }
 
-        private bool CharNotSpace(char c)
-        {
-            if (c.Equals(' ')) return false;
-            return true;
-        }
+        //private bool CharNotSpace(char c)
+        //{
+        //    if (c.Equals(' ')) return false;
+        //    return true;
+        //}
 
         private int EndsWithEtc(StringBuilder sb)
         {
-            if (sb.ToString().EndsWith("וכו׳") || sb.ToString().EndsWith("וכו'") || sb.ToString().EndsWith("וגו'") || sb.ToString().EndsWith("וגו׳")) return 4;
+            //if (sb.ToString().EndsWith("וכו׳") || sb.ToString().EndsWith("וכו'") || sb.ToString().EndsWith("וגו'") || sb.ToString().EndsWith("וגו׳")) return 4;
             if (sb.ToString().EndsWith("וכו") || sb.ToString().EndsWith("וגו")) return 3;
             if (sb.ToString().EndsWith("וכוליה") || sb.ToString().EndsWith("וכולי'") || sb.ToString().EndsWith("וכולי׳")) return 6;
             if (sb.ToString().EndsWith("וגומר")) return 5;
