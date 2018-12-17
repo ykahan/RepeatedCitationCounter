@@ -185,7 +185,7 @@ namespace RepeatedCitationCounter
             List<String> blocksList = new List<String>();
             for (int block = 0; block < blocks.Length; block++)
             {
-                if (blocks[block].Length <= limit && !PreviousLineWasMishna(blocks, block, blocksList))
+                if (blocks[block].Length <= limit && !IsPreviousLineMishna(blocks, block, blocksList))
                 {
                     blocksList.Add(blocks[block]);
                 }
@@ -194,7 +194,7 @@ namespace RepeatedCitationCounter
             return result;
         }        
 
-        private bool PreviousLineWasMishna(string[] blocks, int block, List<String> blocksList)
+        private bool IsPreviousLineMishna(string[] blocks, int block, List<String> blocksList)
         {
             if(block >= 1 && blocksList.Contains(blocks[block - 1])) return true;
             return false;
