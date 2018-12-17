@@ -14,7 +14,7 @@ namespace RepeatedCitationCounter
         {
             AcceptableCharacters = new Char[]
 {
-                'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ך', 'ל', 'מ', 'ם', 'נ', 'ן', 'ס', 'ע', 'פ', 'ף', 'צ', 'ץ', 'ק', 'ר', 'ש', 'ת'
+                'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ך', 'ל', 'מ', 'ם', 'נ', 'ן', 'ס', 'ע', 'פ', 'ף', 'צ', 'ץ', 'ק', 'ר', 'ש', 'ת', ':'
 };
 
 //            AcceptableCharacters = new Char[]
@@ -25,6 +25,7 @@ namespace RepeatedCitationCounter
             FilePaths = new Dictionary<string, string>();
             FilePaths.Add("Bava Basra", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\BavaBasra.txt");
             FilePaths.Add("Testing Text", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\TestingText.txt");
+            FilePaths.Add("Bava Basra 69a", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\BavaBasra69a.txt");
 
         }
     }

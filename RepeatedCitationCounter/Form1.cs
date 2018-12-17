@@ -42,10 +42,11 @@ namespace RepeatedCitationCounter
             Scanner = new Scanner();
             string[] Blocks = Scanner.GetBlocks(masechta.FullText);
             string[] shortBlocks = Scanner.ShortBlocks(Blocks, CharacterLimit);
-            shortBlocks = Scanner.CleanBlocks(shortBlocks);
+            shortBlocks = Scanner.CleanStringArrayOfEtc(shortBlocks);
             string[] repetitionsFound = Scanner.GetRepeatedCites(shortBlocks, Levenshtein);
             ResultsText.Text = $"Masechta {ChosenMasechta} has {repetitionsFound.Length / 2} repeated citations.";
             DisplayBlocks.Text = $"Here are the repetitions discovered in {ChosenMasechta}.";
+            DisplayBlocks.Text = "\n";
             for (int repetition = 0; repetition < repetitionsFound.Length; repetition++)
             {
                 DisplayBlocks.Text += repetitionsFound[repetition];
@@ -57,7 +58,7 @@ namespace RepeatedCitationCounter
             Masechta masechta = new Masechta(ChosenMasechta);
             Scanner = new Scanner();
             string[] Blocks = Scanner.GetBlocks(masechta.FullText);
-            Blocks = Scanner.CleanBlocks(Blocks);
+            Blocks = Scanner.CleanStringArrayOfEtc(Blocks);
             for(int block = 0; block < Blocks.Length; block++)
             {
                 DisplayBlocks.Text += Blocks[block];
@@ -68,6 +69,19 @@ namespace RepeatedCitationCounter
         {
             Levenshtein = (int)LevenshteinUpDown.Value;
             ResultsText.Text = $"The maximum permitted Levenshtein distance is now {Levenshtein}.";
+        }
+
+        private void ShortBlocksBttn_Click(object sender, EventArgs e)
+        {
+            Masechta masechta = new Masechta(ChosenMasechta);
+            Scanner = new Scanner();
+            string[] Blocks = Scanner.GetBlocks(masechta.FullText);
+            string[] shortBlocks = Scanner.ShortBlocks(Blocks, CharacterLimit);
+            shortBlocks = Scanner.CleanStringArrayOfEtc(shortBlocks);
+            for (int block = 0; block < shortBlocks.Length; block++)
+            {
+                DisplayBlocks.Text += shortBlocks[block];
+            }
         }
     }
 }

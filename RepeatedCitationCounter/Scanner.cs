@@ -105,11 +105,12 @@ namespace RepeatedCitationCounter
 
         public string[] GetBlocks(string text)
         {
-            string[] result = text.Split(':');
-            return result;
+            string[] results = text.Split(':');
+            for (int result = 0; result < results.Length; result++) results[result] = ClearText(results[result]);
+            return results;
         }
 
-        public string[] CleanBlocks(string[] blocks)
+        public string[] CleanStringArrayOfEtc(string[] blocks)
         {
             if (blocks.Length > 0)
             {
@@ -117,20 +118,25 @@ namespace RepeatedCitationCounter
                 
                 for (int text = 0; text < blocks.Length; text++)
                 {
-                    sb.Append('\n');
-                    foreach (char character in blocks[text])
-                    {
-                        if (gr.AcceptableCharacters.Contains(character)) sb.Append(character);
-                        //if (CharNotSpace(character)) sb.Append(character);
-                    }
-                    int etc = EndsWithEtc(sb);
-                    if (etc > 0) sb = ClearEtc(sb, etc);
-                    //sb.Append('\n');
+                    sb.Append(blocks[text]);
+                    sb = CleanSBOfEtc(sb);
                     blocks[text] = sb.ToString();
                     sb.Clear();
                 }
             }
             return blocks;
+        }
+
+        public string ClearText(string text)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append('\n');
+            foreach (char character in text)
+            {
+                if (gr.AcceptableCharacters.Contains(character)) sb.Append(character);
+            }
+            text = sb.ToString();
+            return text;
         }
 
         //private bool CharNotSpace(char c)
@@ -148,9 +154,10 @@ namespace RepeatedCitationCounter
             return -1;
         }
 
-        private StringBuilder ClearEtc(StringBuilder sb, int etc)
+        private StringBuilder CleanSBOfEtc(StringBuilder sb)
         {
-            sb.Remove(sb.Length - etc, etc);
+            int etc = EndsWithEtc(sb);
+            if (etc > 0) sb.Remove(sb.Length - etc, etc);
             return sb;
         }
 
@@ -178,13 +185,19 @@ namespace RepeatedCitationCounter
             List<String> blocksList = new List<String>();
             for (int block = 0; block < blocks.Length; block++)
             {
-                if (blocks[block].Length <= limit)
+                if (blocks[block].Length <= limit && !PreviousLineWasMishna(blocks, block, blocksList))
                 {
                     blocksList.Add(blocks[block]);
                 }
             }
             string[] result = blocksList.ToArray();
             return result;
+        }        
+
+        private bool PreviousLineWasMishna(string[] blocks, int block, List<String> blocksList)
+        {
+            if(block >= 1 && blocksList.Contains(blocks[block - 1])) return true;
+            return false;
         }
 
         private int Levenshtein(string a, string b)

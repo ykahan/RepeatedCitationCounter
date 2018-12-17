@@ -40,6 +40,7 @@
             this.DisplayBlocks = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.LevenshteinUpDown = new System.Windows.Forms.NumericUpDown();
+            this.ShortBlocksBttn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.CharsLimitNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LevenshteinUpDown)).BeginInit();
             this.SuspendLayout();
@@ -119,7 +120,8 @@
             this.MasechtaChoice.FormattingEnabled = true;
             this.MasechtaChoice.Items.AddRange(new object[] {
             "Bava Basra",
-            "Testing Text"});
+            "Testing Text",
+            "Bava Basra 69a"});
             this.MasechtaChoice.Location = new System.Drawing.Point(180, 182);
             this.MasechtaChoice.Name = "MasechtaChoice";
             this.MasechtaChoice.Size = new System.Drawing.Size(121, 21);
@@ -168,11 +170,22 @@
             this.LevenshteinUpDown.TabIndex = 11;
             this.LevenshteinUpDown.ValueChanged += new System.EventHandler(this.LevenshteinUpDown_ValueChanged);
             // 
+            // ShortBlocksBttn
+            // 
+            this.ShortBlocksBttn.Location = new System.Drawing.Point(13, 320);
+            this.ShortBlocksBttn.Name = "ShortBlocksBttn";
+            this.ShortBlocksBttn.Size = new System.Drawing.Size(75, 23);
+            this.ShortBlocksBttn.TabIndex = 12;
+            this.ShortBlocksBttn.Text = "Short Blocks";
+            this.ShortBlocksBttn.UseVisualStyleBackColor = true;
+            this.ShortBlocksBttn.Click += new System.EventHandler(this.ShortBlocksBttn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 497);
+            this.Controls.Add(this.ShortBlocksBttn);
             this.Controls.Add(this.LevenshteinUpDown);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.DisplayBlocks);
@@ -205,6 +218,7 @@
         private System.Windows.Forms.Label DisplayBlocks;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown LevenshteinUpDown;
+        private System.Windows.Forms.Button ShortBlocksBttn;
     }
 }
 
