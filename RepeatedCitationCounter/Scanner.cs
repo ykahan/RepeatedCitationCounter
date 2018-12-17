@@ -190,8 +190,7 @@ namespace RepeatedCitationCounter
                     blocksList.Add(blocks[block]);
                 }
             }
-            string[] result = blocksList.ToArray();
-            return result;
+            return blocksList.ToArray();
         }        
 
         private bool IsPreviousLineMishna(string[] blocks, int block, List<String> blocksList)
