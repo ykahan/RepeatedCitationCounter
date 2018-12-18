@@ -119,6 +119,7 @@
             // 
             this.MasechtaChoice.FormattingEnabled = true;
             this.MasechtaChoice.Items.AddRange(new object[] {
+            "Gittin (Bavli)",
             "Bava Basra",
             "Testing Text",
             "Bava Basra 69a"});
@@ -160,11 +161,6 @@
             // LevenshteinUpDown
             // 
             this.LevenshteinUpDown.Location = new System.Drawing.Point(180, 146);
-            this.LevenshteinUpDown.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.LevenshteinUpDown.Name = "LevenshteinUpDown";
             this.LevenshteinUpDown.Size = new System.Drawing.Size(50, 20);
             this.LevenshteinUpDown.TabIndex = 11;

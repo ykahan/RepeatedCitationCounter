@@ -59,6 +59,7 @@ namespace RepeatedCitationCounter
             Scanner = new Scanner();
             string[] Blocks = Scanner.GetBlocks(masechta.FullText);
             Blocks = Scanner.CleanStringArrayOfEtc(Blocks);
+            DisplayBlocks.Text = "Blocks In Chosen Text:\n\n";
             for(int block = 0; block < Blocks.Length; block++)
             {
                 DisplayBlocks.Text += Blocks[block];

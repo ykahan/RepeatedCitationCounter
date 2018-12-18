@@ -115,7 +115,7 @@ namespace RepeatedCitationCounter
             if (blocks.Length > 0)
             {
                 StringBuilder sb = new StringBuilder();
-                
+
                 for (int text = 0; text < blocks.Length; text++)
                 {
                     sb.Append(blocks[text]);
@@ -176,8 +176,7 @@ namespace RepeatedCitationCounter
                     resultsList.Add(blocks[block]);
                 }
             }
-            string[] resultsArray = resultsList.ToArray();
-            return resultsArray;
+            return resultsList.ToArray();
         }
 
         public string[] ShortBlocks(string[] blocks, int limit)
@@ -185,17 +184,14 @@ namespace RepeatedCitationCounter
             List<String> blocksList = new List<String>();
             for (int block = 0; block < blocks.Length; block++)
             {
-                if (blocks[block].Length <= limit && !IsPreviousLineMishna(blocks, block, blocksList))
-                {
-                    blocksList.Add(blocks[block]);
-                }
+                if (blocks[block].Length <= limit && !IsPreviousLineMishna(blocks, block, blocksList)) blocksList.Add(blocks[block]);
             }
             return blocksList.ToArray();
-        }        
+        }
 
         private bool IsPreviousLineMishna(string[] blocks, int block, List<String> blocksList)
         {
-            if(block >= 1 && blocksList.Contains(blocks[block - 1])) return true;
+            if (block >= 1 && blocksList.Contains(blocks[block - 1])) return true;
             return false;
         }
 
