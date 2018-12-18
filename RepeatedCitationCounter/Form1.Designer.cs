@@ -119,7 +119,11 @@
             // 
             this.MasechtaChoice.FormattingEnabled = true;
             this.MasechtaChoice.Items.AddRange(new object[] {
+            "Pesachim",
+            "Kesuvos",
             "Gittin (Bavli)",
+            "Yevamos",
+            "Bava Metzia",
             "Bava Basra",
             "Testing Text",
             "Bava Basra 69a"});

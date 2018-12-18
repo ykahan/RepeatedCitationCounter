@@ -27,6 +27,10 @@ namespace RepeatedCitationCounter
             FilePaths.Add("Testing Text", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\TestingText.txt");
             FilePaths.Add("Bava Basra 69a", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\BavaBasra69a.txt");
             FilePaths.Add("Gittin (Bavli)",  @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\GittinBavli.txt");
+            FilePaths.Add("Pesachim", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\Pesachim.txt");
+            FilePaths.Add("Bava Metzia", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\BavaMetzia.txt");
+            FilePaths.Add("Yevamos", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\Yevamos.txt");
+            FilePaths.Add("Kesuvos", @"C:\Users\USER\Documents\Yehoshua\Programming\Text Resources\RepeatedCitationCounter\Kesuvos.txt");
 
         }
     }
