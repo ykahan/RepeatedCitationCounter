@@ -81,13 +81,14 @@ namespace RepeatedCitationCounter
         {
             StreamWriter sw = new StreamWriter(path);
             sw.WriteLine($"Analyzing {ChosenMasechta}");
+            sw.WriteLine($"Character limit set to {CharacterLimit}");
             sw.WriteLine($"Maximum allowable Levenshtein distance of {Levenshtein}");
             sw.WriteLine($"Found {text.Length / 2} repetitions.");
             sw.WriteLine("Now printing both halves of each repetition.");
             sw.WriteLine();
 
             int longestString = LongestString(text);
-            longestString += 5;
+            longestString *= 3;
 
             for (int str = 0; str < text.Length; str += 2)
             {
