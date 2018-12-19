@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace RepeatedCitationCounter
 {
@@ -51,6 +52,8 @@ namespace RepeatedCitationCounter
             {
                 DisplayBlocks.Text += repetitionsFound[repetition];
             }
+            if (SaveOption.Checked) SaveTextFile(repetitionsFound);
+
         }
 
         private void PrintButton_Click(object sender, EventArgs e)
@@ -62,8 +65,28 @@ namespace RepeatedCitationCounter
             DisplayBlocks.Text = "Blocks In Chosen Text:\n\n";
             for(int block = 0; block < Blocks.Length; block++)
             {
-                DisplayBlocks.Text += Blocks[block];
+                DisplayBlocks.Text += "\n" + Blocks[block];
             }
+        }
+
+        private void SaveTextFile(string[] text)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(@"C:\Users\USER\source\repos\RepeatedCitationCounter\");
+            sb.Append("\\");
+            sb.Append(ChosenMasechta);
+            sb.Append(" ");
+            sb.Append(LevenshteinUpDown.Value);
+            sb.Append(".txt");
+            string path = sb.ToString();
+            StreamWriter sw = new StreamWriter(path);
+            sw.WriteLine($"Analyzing {ChosenMasechta}");
+            sw.WriteLine($"Maximum allowable Levenshtein distance of {Levenshtein}");
+            sw.WriteLine($"Found {text.Length / 2} repetitions.");
+            sw.WriteLine("Now printing both halves of each repetition.");
+            sw.WriteLine();
+            foreach (string str in text) sw.WriteLine(str);
+            sw.Close();
         }
 
         private void LevenshteinUpDown_ValueChanged(object sender, EventArgs e)
@@ -83,6 +106,12 @@ namespace RepeatedCitationCounter
             {
                 DisplayBlocks.Text += shortBlocks[block];
             }
+        }
+
+        private void SaveOption_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SaveOption.Checked) ResultsText.Text = "Will save analysis to text file.";
+            else ResultsText.Text = "Will not save analysis to text file.";
         }
     }
 }

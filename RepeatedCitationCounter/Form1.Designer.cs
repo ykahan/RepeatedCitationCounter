@@ -41,6 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.LevenshteinUpDown = new System.Windows.Forms.NumericUpDown();
             this.ShortBlocksBttn = new System.Windows.Forms.Button();
+            this.SaveOption = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CharsLimitNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LevenshteinUpDown)).BeginInit();
             this.SuspendLayout();
@@ -149,9 +150,8 @@
             this.DisplayBlocks.AutoSize = true;
             this.DisplayBlocks.Location = new System.Drawing.Point(408, 13);
             this.DisplayBlocks.Name = "DisplayBlocks";
-            this.DisplayBlocks.Size = new System.Drawing.Size(65, 13);
+            this.DisplayBlocks.Size = new System.Drawing.Size(0, 13);
             this.DisplayBlocks.TabIndex = 9;
-            this.DisplayBlocks.Text = "Display Test";
             // 
             // label4
             // 
@@ -180,11 +180,23 @@
             this.ShortBlocksBttn.UseVisualStyleBackColor = true;
             this.ShortBlocksBttn.Click += new System.EventHandler(this.ShortBlocksBttn_Click);
             // 
+            // SaveOption
+            // 
+            this.SaveOption.AutoSize = true;
+            this.SaveOption.Location = new System.Drawing.Point(152, 280);
+            this.SaveOption.Name = "SaveOption";
+            this.SaveOption.Size = new System.Drawing.Size(148, 17);
+            this.SaveOption.TabIndex = 13;
+            this.SaveOption.Text = "Save Results To Text File";
+            this.SaveOption.UseVisualStyleBackColor = true;
+            this.SaveOption.CheckedChanged += new System.EventHandler(this.SaveOption_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 497);
+            this.Controls.Add(this.SaveOption);
             this.Controls.Add(this.ShortBlocksBttn);
             this.Controls.Add(this.LevenshteinUpDown);
             this.Controls.Add(this.label4);
@@ -219,6 +231,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown LevenshteinUpDown;
         private System.Windows.Forms.Button ShortBlocksBttn;
+        private System.Windows.Forms.CheckBox SaveOption;
     }
 }
 
