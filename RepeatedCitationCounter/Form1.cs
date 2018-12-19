@@ -71,6 +71,39 @@ namespace RepeatedCitationCounter
 
         private void SaveTextFile(string[] text)
         {
+
+            string path = BuildPath();
+            WriteFile(path, text);
+            
+        }
+
+        private void WriteFile(string path, string[] text)
+        {
+            StreamWriter sw = new StreamWriter(path);
+            sw.WriteLine($"Analyzing {ChosenMasechta}");
+            sw.WriteLine($"Maximum allowable Levenshtein distance of {Levenshtein}");
+            sw.WriteLine($"Found {text.Length / 2} repetitions.");
+            sw.WriteLine("Now printing both halves of each repetition.");
+            sw.WriteLine();
+
+            int longestString = LongestString(text);
+            longestString += 5;
+
+            for (int str = 0; str < text.Length; str += 2)
+            {
+                sw.WriteLine("\n" + text[str]);
+                sw.WriteLine(text[str + 1]);
+                if (text.Length - 2 > str)
+                {
+                    for (int dash = 0; dash < longestString; dash++) sw.Write("-");
+                    sw.WriteLine();
+                }
+            }
+            sw.Close();
+        }
+
+        private string BuildPath()
+        {
             StringBuilder sb = new StringBuilder();
             sb.Append(@"C:\Users\USER\source\repos\RepeatedCitationCounter\");
             sb.Append("\\");
@@ -78,20 +111,17 @@ namespace RepeatedCitationCounter
             sb.Append(" ");
             sb.Append(LevenshteinUpDown.Value);
             sb.Append(".txt");
-            string path = sb.ToString();
-            StreamWriter sw = new StreamWriter(path);
-            sw.WriteLine($"Analyzing {ChosenMasechta}");
-            sw.WriteLine($"Maximum allowable Levenshtein distance of {Levenshtein}");
-            sw.WriteLine($"Found {text.Length / 2} repetitions.");
-            sw.WriteLine("Now printing both halves of each repetition.");
-            sw.WriteLine();
-            for(int str = 0; str < text.Length; str += 2)
+            return sb.ToString();
+        }
+
+        private int LongestString(string[] text)
+        {
+            int result = 0;
+            for(int str = 0; str < text.Length; str++)
             {
-                sw.WriteLine(text[str]);
-                sw.WriteLine(text[str + 1]);
-                sw.WriteLine("----------");
+                if (result < text[str].Length) result = text[str].Length;
             }
-            sw.Close();
+            return result;
         }
 
         private void LevenshteinUpDown_ValueChanged(object sender, EventArgs e)
