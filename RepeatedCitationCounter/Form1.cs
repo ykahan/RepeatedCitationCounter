@@ -18,7 +18,7 @@ namespace RepeatedCitationCounter
         private int characterLimit = 50;
         public int CharacterLimit { get { return characterLimit; } set { characterLimit = value; } }
         private int levenshtein = 0;
-        public int Levenshtein { get { return levenshtein;  } set { levenshtein = value; } }
+        public int Levenshtein { get { return levenshtein; } set { levenshtein = value; } }
 
         public Form1()
         {
@@ -63,7 +63,7 @@ namespace RepeatedCitationCounter
             string[] Blocks = Scanner.GetBlocks(masechta.FullText);
             Blocks = Scanner.CleanStringArrayOfEtc(Blocks);
             DisplayBlocks.Text = "Blocks In Chosen Text:\n\n";
-            for(int block = 0; block < Blocks.Length; block++)
+            for (int block = 0; block < Blocks.Length; block++)
             {
                 DisplayBlocks.Text += "\n" + Blocks[block];
             }
@@ -85,7 +85,12 @@ namespace RepeatedCitationCounter
             sw.WriteLine($"Found {text.Length / 2} repetitions.");
             sw.WriteLine("Now printing both halves of each repetition.");
             sw.WriteLine();
-            foreach (string str in text) sw.WriteLine(str);
+            for(int str = 0; str < text.Length; str += 2)
+            {
+                sw.WriteLine(text[str]);
+                sw.WriteLine(text[str + 1]);
+                sw.WriteLine("----------");
+            }
             sw.Close();
         }
 
