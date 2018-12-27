@@ -151,6 +151,7 @@ namespace RepeatedCitationCounter
             if (sb.ToString().EndsWith("וכו") || sb.ToString().EndsWith("וגו")) return 3;
             if (sb.ToString().EndsWith("וכוליה") || sb.ToString().EndsWith("וכולי'") || sb.ToString().EndsWith("וכולי׳")) return 6;
             if (sb.ToString().EndsWith("וגומר")) return 5;
+            if (sb.ToString().EndsWith("כו") || sb.ToString().EndsWith("גו")) return 2;
             return -1;
         }
 
